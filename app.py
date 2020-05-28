@@ -19,7 +19,7 @@ def megasena():
   return remove_repeated(lucky_numbers)
 
 #retorna 1 conjunto de números da sorte para megasena
-#print(megasena())
+print(megasena())
 
 #retorna x conjuntos de números da sorte para megasena
 def multiple_luckynumbers():
