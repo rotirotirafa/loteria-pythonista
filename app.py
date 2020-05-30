@@ -1,41 +1,36 @@
-import random
+import json
+
+from flask import Flask
+from flask_restful import Resource, Api
+from flask import jsonify
+from loteria import megasena
 
 
-def generator(maxLenght):
-    return random.randrange(1, maxLenght)
+app = Flask(__name__)
+
+api = Api(app)
+
+class Megasena(Resource):
+
+    def get(self, quantity=None):
+        if quantity:
+            return {'quantidade': quantity}
+        game = megasena()
+        return [
+            {'jogo': game},
+            {   
+                'posicao_um' : game[0],
+                'posicao_dois': game[1],
+                'posicao_tres': game[2],
+                'posicao_quatro': game[3],
+                'posicao_quinto': game[4],
+                'posicao_seis': game[5]
+            }
+        ]
 
 
-def checkLenghtOfSix(new_lucky_numbers):
-    if len(new_lucky_numbers) < 6:
-        return True
-    return False
+api.add_resource(Megasena, '/megasena', '/megasena/jogos/<int:quantity>')
 
 
-def remove_repeated(lucky_numbers):
-    new_lucky_numbers = []
-    for number in lucky_numbers:
-        if number not in new_lucky_numbers:
-            new_lucky_numbers.append(number)
-    while checkLenghtOfSix(new_lucky_numbers):
-        new_lucky_numbers.append(generator(60))
-    return sorted(new_lucky_numbers)
-
-
-def megasena():
-    lucky_numbers = []
-    for n in range(6):
-        lucky_numbers.append(generator(60))
-    return remove_repeated(lucky_numbers)
-
-# retorna 1 conjunto de números da sorte para megasena
-# print(megasena())
-
-
-# retorna x conjuntos de números da sorte para megasena
-def multiple_luckynumbers(quantity):
-    lucky_numbers = []
-    for n in range(quantity):
-        lucky_numbers.append({"Jogo": n, "números": megasena()})
-    return lucky_numbers
-
-# print(multiple_luckynumbers(10))
+if __name__ == '__main__':
+    app.run(debug=True)
