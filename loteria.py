@@ -1,5 +1,5 @@
 import random
-import json
+
 
 def generator(maxLenght):
     return random.randrange(1, maxLenght)
@@ -24,7 +24,7 @@ def remove_repeated(lucky_numbers):
 def megasena():
     lucky_numbers = []
     for n in range(6):
-        lucky_numbers.append(generator(60))   
+        lucky_numbers.append(generator(60))
     return remove_repeated(lucky_numbers)
 
 # retorna 1 conjunto de números da sorte para megasena
@@ -35,7 +35,7 @@ def megasena():
 def multiple_luckynumbers(quantity):
     lucky_numbers = []
     for n in range(quantity):
-        lucky_numbers.append({"Jogo": n, "números": megasena()})
+        lucky_numbers.append({"Jogo": n, "Números": megasena()})
     return lucky_numbers
 
 # print(multiple_luckynumbers(10))
