@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api
-from controllers.megasena import Megasena
+from resources.megasena import Megasena
 from flask_cors import CORS
 
 app = Flask(__name__)

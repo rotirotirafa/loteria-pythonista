@@ -35,7 +35,7 @@ def megasena():
 def multiple_luckynumbers(quantity):
     lucky_numbers = []
     for n in range(quantity):
-        lucky_numbers.append({"Jogo": n, "Números": megasena()})
+        lucky_numbers.append({"Jogo": n, "Numeros": megasena()})
     return lucky_numbers
 
 # print(multiple_luckynumbers(10))
