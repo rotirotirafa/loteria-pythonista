@@ -1,8 +1,8 @@
 import random
 
 
-def generator(maxLenght):
-    return random.randrange(1, maxLenght)
+def generator(max_lenght):
+    return random.randrange(1, max_lenght)
 
 
 def check_six_size(new_lucky_numbers):
@@ -29,14 +29,9 @@ def megasena():
 
     for n in range(6):
         lucky_numbers.append(generator(60))
-        
+
     return remove_repeated(lucky_numbers)
 
-# retorna 1 conjunto de números da sorte para megasena
-# print(megasena())
-
-
-# retorna x conjuntos de números da sorte para megasena
 def multiple_luckynumbers(quantity):
     lucky_numbers = []
     for n in range(quantity):
@@ -44,3 +39,4 @@ def multiple_luckynumbers(quantity):
     return lucky_numbers
 
 # print(multiple_luckynumbers(10))
+# print(megasena())
