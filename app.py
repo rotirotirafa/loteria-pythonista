@@ -24,19 +24,24 @@ def remove_repeated(lucky_numbers):
     return sorted(new_lucky_numbers)
 
 
-def megasena():
+def megasena(numbers_quantity: int = 6):
+
+    if numbers_quantity > 15:
+        numbers_quantity = 15
+
     lucky_numbers = []
 
-    for n in range(6):
+    for n in range(numbers_quantity):
         lucky_numbers.append(generator(60))
 
     return remove_repeated(lucky_numbers)
 
-def multiple_luckynumbers(quantity):
+def multiple_luckynumbers(bets: int, numbers_quantity: int):
     lucky_numbers = []
-    for n in range(quantity):
-        lucky_numbers.append({"Jogo": n, "números": megasena()})
+    
+    for n in range(bets):
+        lucky_numbers.append({"game": n, "numbers": megasena(numbers_quantity)})
+    
     return lucky_numbers
 
-# print(multiple_luckynumbers(10))
-# print(megasena())
+print(multiple_luckynumbers(1,6))
