@@ -10,3 +10,11 @@ class Lottery:
 
     def __repr__(self) -> str:
         return f'Name: {self.name}, Apostas: {self.bets}, Quantidade: {self.quantity}'
+
+
+class Megasena(Lottery):
+    pass
+
+
+a = Megasena(name='megasena', bets=10, quantity=5, max_choices=15, min_choices=6).__repr__
+print(a)
